@@ -11,13 +11,18 @@ describe('Address Book', function () {  //kirjeldame uut tsükklit
         // siis see peab olema sama, mis thisContact
     });
 
-    it('should be able to delete a contact', function(){
-        var addressBook = new AddressBook(),
+    it('should be able to delete a contact', function() { //kirjeldame speci, mis peaks kontakti kustutama
+        var addressBook = new AddressBook(), //lisame samad objektid
             thisContact = new Contact();
 
-        addressBook.addContact(thisContact);
+        addressBook.addContact(thisContact); //lisame kontakti
         addressBook.deleteContact(0);
+        //ning kustutame kontakti,
+        //mis peaks olema sama nagu thisContact
 
         expect(addressBook.getContact(0)).not.toBeDefined();
-    })
+        //testime, kas kontakt ikka kustutati,
+        //oodatav vastus on, et kui me võtame esimese kontakti raamatust,
+        // siis oodatav vastus oleks not to e defined, sest kustutatud objekt ei tohiks olemas olla
+    });
 });
