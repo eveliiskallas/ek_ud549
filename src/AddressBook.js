@@ -1,5 +1,17 @@
 function AddressBook(){  //defineerime AadressBooki
     this.contacts = []; //lisame uue omaduse, mis on massiiv
+    this.initialComplete = false;
+}
+
+AddressBook.prototype.getInitialContacts = function(cb){ //kirjutame uue funktsiooni
+    var self = this;
+
+    setTimeout(function () { //et muuta kood asünkroonseks, lisatakse timeout
+        self.initialComplete = true; // koodijupp, mida võlts APi kutse teeb, kui asünkroonsus on tehtud
+        if(cb){
+            return cb();
+        }
+    }, 3)
 }
 
 AddressBook.prototype.addContact = function(contact) {
